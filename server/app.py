@@ -1,17 +1,19 @@
-from flask import Flask, render_template, request, jsonify
 import os
+from flask import Flask, render_template, request, jsonify
 
-# Resolve the path to the templates folder
-template_dir = os.path.abspath('../templates')
 
-app = Flask(__name__, template_folder=template_dir)
+base_dir = os.path.dirname(os.path.abspath(__file__))  
+template_dir = os.path.join(base_dir, '../templates')  
+static_dir = os.path.join(base_dir, '../static')
 
-tasks = []  # Store tasks in memory
-task_stack = []  # Stack for undo functionality
+app = Flask(__name__, template_folder=template_dir, static_folder=static_dir)
+
+tasks = []  
+task_stack = []  
 
 @app.route('/')
 def index():
-    return render_template('todoro.html')
+    return render_template('index.html')
 
 @app.route('/tasks', methods=['GET', 'POST', 'DELETE'])
 def handle_tasks():
@@ -19,7 +21,7 @@ def handle_tasks():
         task = request.json.get('task')
         if not task:
             return jsonify({'error': 'Task is required'}), 400
-        tasks.append({'task': task, 'pomodoro': 0})  # Task with Pomodoro counter
+        tasks.append({'task': task, 'pomodoro': 0})  
         task_stack.append(('ADD', task))
         return jsonify(tasks), 201
 
@@ -55,7 +57,7 @@ def pomodoro():
     if not task:
         return jsonify({'error': 'Task not found'}), 404
 
-    task['pomodoro'] += 1  # Increment Pomodoro count
+    task['pomodoro'] += 1  
     return jsonify({'message': f'Pomodoro session completed for "{task_name}"!'}), 200
 
 @app.route('/complete', methods=['POST'])

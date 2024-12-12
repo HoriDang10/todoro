@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TODORO</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="fixed-header">
+    <h1>TODORO</h1>
+  </div>
+
+  <div class="task-input-container">
+    <input type="text" id="task-input" placeholder="Enter a task" />
+    <button onclick="addTask()">Add Task</button>
+    <button onclick="undo()">Undo</button>
+  </div>
+
+  <div class="timer-container">
+    <div id="timer-display">25:00</div>
+    <div class="timer-buttons">
+      <button onclick="increaseTimer()">+</button>
+      <button onclick="decreaseTimer()">-</button>
+    </div>
+    <div>
+      <strong>Current Task:</strong> <span id="current-task">None</span>
+    </div>
+    <button onclick="resetPomodoro()">End section</button>
+  </div>
+
+  <div class="task-list-container">
+    <ul id="task-list"></ul>
+  </div>
+
+  <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
