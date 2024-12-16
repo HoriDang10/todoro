@@ -1,173 +1,139 @@
 /* Global Styling */
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #92EEAD, #92ED91, #48EE91, #48D0BC);
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    transition: background 0.9s ease-in-out;
-  }
-  
-  h1 {
-    margin-top: 10px;
-    font-size: 55px;
-    color: #FFFFFF;
-  }
-  
-  /* Fixed Title Section */
-  .fixed-header {
-    position: fixed;
-    top: 5px;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    line-height: 1.4; /* Adds consistent spacing between h1 and h2 */
-  }
-  
-  /* Fixed Task Input Section */
-  .task-input-container {
-    position: fixed;
-    top: 15%;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-  }
-  
-  #task-input {
-    width: 300px;
-    padding: 8px;
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-  
-  /* Timer Container Positioned Below the Input Section */
-  .timer-container {
-    position: fixed;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
-  
-  #timer-display {
-    font-size: 100px;
-    color: #FFFFFF;
-    margin: 10px 0;
-  }
-  
-  .timer-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
-  }
-  
-  /* Fixed Task List Container */
-  .task-list-container {
-    position: fixed;
-    top: 70%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    max-height: 20%;
-    overflow-y: auto;
-    border: 1px solid #ddd;
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  li {
-    padding: 10px;
-    font-size: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  li:last-child {
-    border-bottom: none;
-  }
-  
-  .task-buttons {
-    display: flex;
-    align-items: center; /* Aligns checkbox and buttons vertically */
-    gap: 10px;
-  }
-  
-  /* Buttons Styling */
-  button {
-    padding: 10px 15px;
-    margin: 5px;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    background-color: #5B81FF;
-    color: white;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  button:active {
-    background-color: #003f7f;
-  }
-  
-  .task-checkbox {
-    appearance: none;
-    width: 24px;
-    height: 24px;
-    border: 2px solid #5B81FF;
-    border-radius: 4px;
-    background-color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .task-checkbox:checked {
-    background-color: #5B81FF;
-    border-color: #0056b3;
-  }
-  
-  .task-checkbox:checked::after {
-    content: '✓';
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
-    text-align: center;
-  }
-  
-  .selected-task {
-    background: linear-gradient(to right, #5B81FF, #736efe);
-    color: white;
-    font-weight: bold;
-  }
-  
-  .selected-task span {
-    color: white;
-  }
-  
-  .selected-task button {
-    background-color: #003f7f;
-  }
-  
-  .selected-task button:hover {
-    background-color: #0056b3;
-  }
-  
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #92EEAD, #92ED91, #48EE91, #48D0BC);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  transition: background 0.9s ease-in-out;
+}
+
+h1 {
+  margin-top: 10px;
+  font-size: 55px;
+  color: #FFFFFF;
+}
+
+/* Fixed Title Section */
+.fixed-header {
+  position: fixed;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  line-height: 1.4; /* Adds consistent spacing between h1 and h2 */
+}
+
+/* Fixed Task Input Section */
+.task-input-container {
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+#task-input {
+  width: 300px;
+  padding: 8px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* Timer Container Positioned Below the Input Section */
+.timer-container {
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+#timer-display {
+  font-size: 100px;
+  color: #FFFFFF;
+  margin: 10px 0;
+}
+
+.timer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Search Bar Below "End Section" */
+.search-container {
+  position: fixed;
+  top: 62%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  margin-top: 10px;
+}
+
+.search-container input {
+  padding: 8px;
+  width: 300px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Fixed Task List Container */
+.task-list-container {
+  position: fixed;
+  top: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  max-height: 20%;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 10px;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+/* Buttons Styling */
+button {
+  padding: 10px 15px;
+  margin: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: #5B81FF;
+  color: white;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:active {
+  background-color: #003f7f;
+}

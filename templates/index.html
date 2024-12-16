@@ -29,6 +29,15 @@
     <button onclick="resetPomodoro()">End section</button>
   </div>
 
+  <div class="search-container">
+    <input
+      type="text"
+      id="search-task"
+      placeholder="Search tasks..."
+      oninput="searchTasks()"
+    />
+  </div>
+  
   <div class="task-list-container">
     <ul id="task-list"></ul>
   </div>
