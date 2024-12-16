@@ -1,6 +1,7 @@
 let timerValue = 25 * 60;
 let timerInterval;
 let currentTask = null;
+let allTasks = []; // Store all tasks for search functionality
 
 function fetchTasks() {
   fetch("/tasks")
@@ -9,23 +10,36 @@ function fetchTasks() {
       return response.json();
     })
     .then(tasks => {
-      const taskList = document.getElementById("task-list");
-      taskList.innerHTML = "";
-      tasks.forEach(task => {
-        const li = document.createElement("li");
-        li.innerHTML = `
-          <span>${task.task} - Pomodoros: ${task.pomodoro}</span>
-          <div class="task-buttons">
-            <input type="checkbox" class="task-checkbox" onclick="completeTask('${task.task}')" />
-            <button onclick="selectTask('${task.task}')">Select</button>
-            <button onclick="startPomodoro('${task.task}')">Start Pomodoro</button>
-          </div>
-        `;
-        taskList.appendChild(li);
-      });
+      allTasks = tasks; // Store tasks globally for filtering
+      renderTaskList(allTasks);
       scrollTaskContainerToBottom();
     })
     .catch(error => console.error("Error fetching tasks:", error));
+}
+
+function renderTaskList(tasks) {
+  const taskList = document.getElementById("task-list");
+  taskList.innerHTML = "";
+  tasks.forEach(task => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <span>${task.task} - Pomodoros: ${task.pomodoro}</span>
+      <div class="task-buttons">
+        <input type="checkbox" class="task-checkbox" onclick="completeTask('${task.task}')" />
+        <button onclick="selectTask('${task.task}')">Select</button>
+        <button onclick="startPomodoro('${task.task}')">Start Pomodoro</button>
+      </div>
+    `;
+    taskList.appendChild(li);
+  });
+}
+
+function searchTasks() {
+  const query = document.getElementById("search-task").value.toLowerCase();
+  const filteredTasks = allTasks.filter(task =>
+    task.task.toLowerCase().includes(query)
+  );
+  renderTaskList(filteredTasks);
 }
 
 function completeTask(taskName) {
